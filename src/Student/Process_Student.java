@@ -14,7 +14,7 @@ public class Process_Student {
 		Connection conn = con.getCon();
 		
 		// Lệnh SQL
-		String sql = "Select * from -----";
+		String sql = "Select * from tb_student";
 		
 		// Tạo danh sách 
 		ArrayList<Student> list = new ArrayList();
@@ -31,84 +31,82 @@ public class Process_Student {
 				s.setID(rs.getString("ID"));
 				s.setName(rs.getString("Name"));
 				s.setClassID(rs.getString("ClassID"));
-				s.setBirth(rs.getInt("Birth"));
 				s.setGender(rs.getString("Gender"));
+				s.setBirth(rs.getString("Birth"));
 				s.setAddress(rs.getString("Address"));
 				list.add(s);
 			}
 			conn.close();
 		}
 		catch (SQLException e) {
-			System.out.print("Can't Display List Student");
+			System.out.print("\nCan't Display List Student");
 		}
 		return list;
 	}
 	
 	// Phương thức "Thêm"
-	public boolean insertStudent(String ID, String Name, String ClassID, int Birth, String Gender, String Address) {
+	public boolean insert_Student(String ID, String Name, String ClassID, String Gender, String Birth, String Address) {
 		Connection conn = con.getCon();
-		String sql = "insert into -----(ID, Name, ClassID, Birth, Gender, Address)" + "values(?,?,?,?,?,?)";
+		String sql = "insert into tb_student(ID, Name, ClassID, Birth, Gender, Address)" + "values(?,?,?,?,?,?)";
 		try {
 			// Tạo truy vấn
 			PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
 			ps.setString(1, ID);
 			ps.setString(2, Name);
 			ps.setString(3, ClassID);
-			ps.setInt(4, Birth);
-			ps.setString(5, Gender);
+			ps.setString(4, Gender);
+			ps.setString(5, Birth);
 			ps.setString(6, Address);
-			ps.executeQuery();
+			ps.executeUpdate();
 			conn.close();
 			return true;
 		}
 		catch (SQLException e) {
-			System.out.print("Can't Insert Student");
+			System.out.print("\nCan't Insert Student");
 			return false;
 		}
 	}
 	
 	// Phương thức "Xóa"
-	public boolean deleteStudent(String ID, String Name, String ClassID, int Birth, String Gender, String Address) {
+	public boolean delete_Student(String ID) {
 		Connection conn = con.getCon();
-		String sql = "delete from ----- where ID = ?";
+		String sql = "delete from tb_student where ID = ?";
 		try {
 			// Tạo truy vấn
 			PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
 			ps.setString(1, ID);
-			ps.executeQuery();
+			ps.executeUpdate();   
 			conn.close();
 			return true;
 		}
 		catch (SQLException e) {
-			System.out.print("Can't Delete Student");
+			System.out.print("\nCan't Delete Student");
 			return false;
 		}
 	}
 	
 	// Phương thức "Cập nhật"
-	public boolean updateStudent(String ID, String Name, String ClassID, int Birth, String Gender, String Address) {
+	public boolean update_Student(String ID, String Name, String ClassID, String Gender, String Birth, String Address) {
 		Connection conn = con.getCon();
-		String sql = "update -----" + "set Name = ?, ClassID = ?, Birth = ?, Gender = ?, Address = ?" + "Where ID = ?";
+		String sql = "update tb_student set Name = ?, ClassID = ?, Gender = ?, Birth = ?, Address = ? Where (ID = ?)";
 		try {
 			// Tạo truy vấn
 			PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
 			ps.setString(1, ID);
 			ps.setString(2, Name);
 			ps.setString(3, ClassID);
-			ps.setInt(4, Birth);
-			ps.setString(5, Gender);
+			ps.setString(4, Gender);
+			ps.setString(5, Birth);
 			ps.setString(6, Address);
-			ps.executeQuery();
+			ps.executeUpdate();
 			conn.close();
 			return true;
 		}
 		catch (SQLException e) {
-			System.out.print("Can't Update Student");
+			System.out.print("\nCan't Update Student");
 			return false;
 		}
 	}
-	
-	// Phương thức "Tìm kiếm "
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

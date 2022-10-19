@@ -4,10 +4,9 @@ public abstract class Person {
 	public String ID;
 	public String Name;
 	public String ClassID;
-	public int Birth;
+	public String Birth;
 	public String Gender;
 	public String Address;
-	
 	
 	public String getID() {
 		return ID;
@@ -27,10 +26,10 @@ public abstract class Person {
 	public void setClassID(String classID) {
 		ClassID = classID;
 	}
-	public int getBirth() {
+	public String getBirth() {
 		return Birth;
 	}
-	public void setBirth(int birth) {
+	public void setBirth(String birth) {
 		Birth = birth;
 	}
 	public String getGender() {
@@ -46,8 +45,7 @@ public abstract class Person {
 		Address = address;
 	}
 	
-	
-	public Person(String iD, String name, String classID, int birth, String gender, String address) {
+	public Person(String iD, String name, String classID, String birth, String gender, String address) {
 		super();
 		ID = iD;
 		Name = name;
@@ -56,7 +54,6 @@ public abstract class Person {
 		Gender = gender;
 		Address = address;
 	}
-	
 	
 	public Person() {
 		super();

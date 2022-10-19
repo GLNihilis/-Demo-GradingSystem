@@ -15,7 +15,7 @@ public class MySQL {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
 			// Tạo kết nối
-			conn = DriverManager.getConnection("jdbc:mysql://url-----", "user-----", "password-----");
+			conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/db_student", "root", "mysql");
 			
 			/*
 			Statement stmt = conn.createStatement();
@@ -24,7 +24,7 @@ public class MySQL {
 			
 			//Kiểm tra kết nối SQL
 			if (conn != null) {
-				System.out.print("Connected Sucessfully To MySQL Workbench !");
+				System.out.print("\nConnected Sucessfully To MySQL Workbench !");
 			}
 		}
 		catch (ClassNotFoundException | SQLException e) {
@@ -33,7 +33,7 @@ public class MySQL {
 		return conn;
 	}
 	
-	Connection cn() {
+	public static Connection cn() {
 		return null;
 	}
 	
