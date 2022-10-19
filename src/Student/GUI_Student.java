@@ -85,36 +85,6 @@ public class GUI_Student extends JFrame {
 		table.setModel(Model);
 	}
 	
-/*
-	public void getStudent_ByClassID_ByGender(String ClassID, String Gender) {
-		Model.setRowCount(0);
-		ArrayList<Student> ls = pst.getStudent_ByClassID_ByGender(ClassID, Gender);
-		for (int i = 0; i < ls.size(); i++) {
-			Student s = (Student) ls.get(i);
-			Vector<Object> tbRow = new Vector<>();
-			tbRow.add(s.getID());
-			tbRow.add(s.getName());
-			tbRow.add(s.getClassID());
-			tbRow.add(s.getGender());
-			tbRow.add(s.getBirth());
-			tbRow.add(s.getAddress());
-			
-			row.add(tbRow);
-		}
-		Model.setDataVector(row, column);
-		table.setModel(Model);
-	}
-	
-	public void Checkbox_btn() {
-		if(checkbox_Male.isSelected() == true) {
-			getStudent_ByClassID_ByGender((String)combo_ClassID.getSelectedItem(), "Nam");
-		}
-		if(checkbox_Female.isSelected() == true) {
-			getStudent_ByClassID_ByGender((String)combo_ClassID.getSelectedItem(), "Nữ");
-		}
-	}
-*/
-	
 	/**
 	 * Launch the application.
 	 */
@@ -135,7 +105,7 @@ public class GUI_Student extends JFrame {
 	 * Create the frame.
 	 */
 	public GUI_Student() {
-		setTitle("Student Management");
+		setTitle("Student Management Page");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1100, 550);
 		
@@ -342,7 +312,9 @@ public class GUI_Student extends JFrame {
 		btn_Exit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(JOptionPane.showConfirmDialog(btn_Exit, "Confirm if you want to exit", "Exit ?", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_NO_OPTION) {
-					System.exit(0);
+					GUI_Dashboard frame = new GUI_Dashboard();
+					frame.setVisible(true);
+					dispose();
 				}
 			}
 		});

@@ -30,16 +30,16 @@ public class Process_Score {
 				Student s = new Student();
 				s.setID(rs.getString("ID"));
 				s.setName(rs.getString("Name"));
-				s.setLiterature(rs.getDouble("Literature"));
-				s.setMath(rs.getDouble("Math"));
-				s.setEnglish(rs.getDouble("English"));
-				s.setPhysical(rs.getDouble("Physical"));
-				s.setChemical(rs.getDouble("Chemical"));
-				s.setBiology(rs.getDouble("Biology"));
-				s.setHistory(rs.getDouble("History"));
-				s.setGeography(rs.getDouble("Geography"));
-				s.setEthic(rs.getDouble("Ethics"));
-				s.setInformatic(rs.getDouble("Informatics"));
+				s.setLiterature(Double.parseDouble(rs.getString("Literature")));
+				s.setMath(Double.parseDouble(rs.getString("Math")));
+				s.setEnglish(Double.parseDouble(rs.getString("English")));
+				s.setPhysical(Double.parseDouble(rs.getString("Physical")));
+				s.setChemical(Double.parseDouble(rs.getString("Chemical")));
+				s.setBiology(Double.parseDouble(rs.getString("Biology")));
+				s.setHistory(Double.parseDouble(rs.getString("History")));	
+				s.setGeography(Double.parseDouble(rs.getString("Geography")));
+				s.GPA();
+				s.Rank();
 				list.add(s);
 			}
 			conn.close();
@@ -51,9 +51,9 @@ public class Process_Score {
 	}
 
 	// Phương thức "Thêm"
-	public boolean insert_Score(String ID, String Name, double Literature, double Math, double English, double Physical, double Chemical, double Biology, double History, double Geography, double Ethic, double Informatic) {
+	public boolean insert_Score(String ID, String Name, double Literature, double Math, double English, double Physical, double Chemical, double Biology, double History, double Geography) {
 		Connection conn = con.getCon();
-		String sql = "insert into tb_score(ID, Name, Literature, Math, English, Physical, Chemical, Biology, History, Geography, Ethic, Informatic)" + "values(?,?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into tb_score(ID, Name, Literature, Math, English, Physical, Chemical, Biology, History, Geography)" + "values(?,?,?,?,?,?,?,?,?,?)";
 		try {
 			// Tạo truy vấn
 			PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
@@ -67,8 +67,6 @@ public class Process_Score {
 			ps.setDouble(8, Biology);
 			ps.setDouble(9, History);
 			ps.setDouble(10, Geography);
-			ps.setDouble(11, Ethic);
-			ps.setDouble(12, Informatic);
 			ps.executeUpdate();
 			conn.close();
 			return true;
@@ -98,9 +96,9 @@ public class Process_Score {
 	}
 	
 	// Phương thức "Cập nhật"
-	public boolean update_Score(String ID, String Name, double Literature, double Math, double English, double Physical, double Chemical, double Biology, double History, double Geography, double Ethic, double Informatic) {
+	public boolean update_Score(String ID, String Name, double Literature, double Math, double English, double Physical, double Chemical, double Biology, double History, double Geography) {
 		Connection conn = con.getCon();
-		String sql = "update tb_score set Name = ?, Literature = ?, Math = ?, English = ?, Physical = ?, Chemical = ?, Biology = ?, History = ?, Geography =?, Ethics =?, Informatics = ?" + "Where (ID = ?)";
+		String sql = "update tb_score set Name = ?, Literature = ?, Math = ?, English = ?, Physical = ?, Chemical = ?, Biology = ?, History = ?, Geography =? Where (ID = ?)";
 		try {
 			// Tạo truy vấn
 			PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
@@ -114,8 +112,6 @@ public class Process_Score {
 			ps.setDouble(8, Biology);
 			ps.setDouble(9, History);
 			ps.setDouble(10, Geography);
-			ps.setDouble(11, Ethic);
-			ps.setDouble(12, Informatic);
 			ps.executeUpdate();
 			conn.close();
 			return true;

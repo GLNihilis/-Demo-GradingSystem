@@ -94,7 +94,7 @@ public class GUI_Login extends JFrame {
 					txt_Pass.setText(null);
 					txt_User.setText(null);
 					
-					GUI_Search db = new GUI_Search();
+					GUI_Dashboard db = new GUI_Dashboard();
 					db.setVisible(true);
 				}
 				else {

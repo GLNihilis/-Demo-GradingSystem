@@ -1,7 +1,7 @@
 package Student;
 
 public class Student extends Person{
-	public double Literature, Math, English, Physical, Chemical, Biology, History, Geography, Ethic, Informatic;
+	public double Literature, Math, English, Physical, Chemical, Biology, History, Geography;
 
 	public double getLiterature() {
 		return Literature;
@@ -67,25 +67,9 @@ public class Student extends Person{
 		Geography = geography;
 	}
 
-	public double getEthic() {
-		return Ethic;
-	}
-
-	public void setEthic(double ethic) {
-		Ethic = ethic;
-	}
-
-	public double getInformatic() {
-		return Informatic;
-	}
-
-	public void setInformatic(double informatic) {
-		Informatic = informatic;
-	}
-
 	public Student(String iD, String name, String classID, String birth, String gender, String address, double literature,
 			double math, double english, double physical, double chemical, double biology, double history,
-			double geography, double ethic, double informatic) {
+			double geography) {
 		super(iD, name, classID, birth, gender, address);
 		Literature = literature;
 		Math = math;
@@ -95,8 +79,6 @@ public class Student extends Person{
 		Biology = biology;
 		History = history;
 		Geography = geography;
-		Ethic = ethic;
-		Informatic = informatic;
 	}
 
 	public Student() {
@@ -110,7 +92,7 @@ public class Student extends Person{
 	}
 
 	public double GPA() {
-		return (Literature + Math + English + Physical + Chemical + History + Geography + Ethic + Informatic) / 10;
+		return (Literature + Math + English + Physical + Chemical + History + Geography) / 7;
 	}
 	
 	@Override

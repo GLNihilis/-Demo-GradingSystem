@@ -45,6 +45,7 @@ public class GUI_Dashboard extends JFrame {
 	 * Create the frame.
 	 */
 	public GUI_Dashboard() {
+		setTitle("DASHBOARD");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1100, 550);
 		contentPane = new JPanel();
@@ -73,48 +74,111 @@ public class GUI_Dashboard extends JFrame {
 		contentPane.add(panel_Header);
 		panel_Header.setLayout(null);
 		
-		JLabel lbl_Slogan_1 = new JLabel("Log Out");
-		lbl_Slogan_1.setIcon(new ImageIcon("C:\\Users\\Admin\\Downloads\\BTNhom_9\\src\\icons\\icons8-shutdown-32.png"));
-		lbl_Slogan_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lbl_Slogan_1.setForeground(SystemColor.desktop);
-		lbl_Slogan_1.setFont(new Font("Times New Roman", Font.BOLD, 22));
-		lbl_Slogan_1.setBounds(675, 8, 155, 54);
-		panel_Header.add(lbl_Slogan_1);
+		JLabel lbl_LogOut = new JLabel("Log Out");
+		lbl_LogOut.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				GUI_Login frame = new GUI_Login();
+				frame.setVisible(true);
+				dispose();
+			}
+		});
+		lbl_LogOut.setIcon(new ImageIcon("C:\\Users\\Admin\\Downloads\\BTNhom_9\\src\\icons\\icons8-shutdown-32.png"));
+		lbl_LogOut.setHorizontalAlignment(SwingConstants.CENTER);
+		lbl_LogOut.setForeground(SystemColor.desktop);
+		lbl_LogOut.setFont(new Font("Times New Roman", Font.BOLD, 22));
+		lbl_LogOut.setBounds(675, 8, 155, 54);
+		panel_Header.add(lbl_LogOut);
 		
 		JButton btn_Student = new JButton("");
+		btn_Student.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Color selectionColor = null;
+				btn_Student.setBackground(selectionColor);
+				GUI_Student frame = new GUI_Student();
+				frame.setVisible(true);
+			}
+		});
 		btn_Student.setFont(new Font("Tahoma", Font.PLAIN, 32));
 		btn_Student.setBorderPainted(false);
 		btn_Student.setBackground(SystemColor.textHighlight);
-		btn_Student.setIcon(new ImageIcon("C:\\Users\\Admin\\Downloads\\BTNhom_9\\src\\icons\\icons8-add-user-group-man-man-25.png"));
+		btn_Student.setIcon(new ImageIcon("C:\\Users\\Admin\\Downloads\\BTNhom_9\\src\\icons\\Student.png"));
 		btn_Student.setBounds(70, 200, 240, 139);
 		contentPane.add(btn_Student);
 		
 		JButton btn_Score = new JButton("");
+		btn_Score.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Color selectionColor = null;
+				btn_Score.setBackground(selectionColor);
+				GUI_Score frame = new GUI_Score();
+				frame.setVisible(true);
+			}
+		});
 		btn_Score.setBackground(SystemColor.textHighlight);
 		btn_Score.setBorderPainted(false);
-		btn_Score.setIcon(new ImageIcon("C:\\Users\\Admin\\Downloads\\BTNhom_9\\src\\icons\\icons8-add-to-clipboard-25.png"));
+		btn_Score.setIcon(new ImageIcon("C:\\Users\\Admin\\Downloads\\BTNhom_9\\src\\icons\\Score.png"));
 		btn_Score.setBounds(420, 200, 240, 139);
 		contentPane.add(btn_Score);
 		
 		JButton btn_Search = new JButton("");
+		btn_Search.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Color selectionColor = null;
+				btn_Search.setBackground(selectionColor);
+				GUI_Search frame = new GUI_Search();
+				frame.setVisible(true);
+			}
+		});
+		btn_Search.setIcon(new ImageIcon("C:\\Users\\Admin\\Downloads\\BTNhom_9\\src\\icons\\Search.png"));
 		btn_Search.setBackground(SystemColor.textHighlight);
 		btn_Search.setBorderPainted(false);
 		btn_Search.setBounds(775, 200, 240, 139);
 		contentPane.add(btn_Search);
 		
 		JLabel lbl_Student = new JLabel("Student  Management");
+		lbl_Student.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Color selectionColor = null;
+				btn_Student.setBackground(selectionColor);
+				GUI_Student frame = new GUI_Student();
+				frame.setVisible(true);
+			}
+		});
 		lbl_Student.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lbl_Student.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_Student.setBounds(70, 335, 240, 50);
 		contentPane.add(lbl_Student);
 		
 		JLabel lbl_Score = new JLabel("Score Management");
+		lbl_Score.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Color selectionColor = null;
+				btn_Score.setBackground(selectionColor);
+				GUI_Score frame = new GUI_Score();
+				frame.setVisible(true);
+			}
+		});
 		lbl_Score.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lbl_Score.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_Score.setBounds(420, 335, 240, 50);
 		contentPane.add(lbl_Score);
 		
 		JLabel lbl_Search = new JLabel("Search");
+		lbl_Search.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Color selectionColor = null;
+				btn_Search.setBackground(selectionColor);
+				GUI_Search frame = new GUI_Search();
+				frame.setVisible(true);
+			}
+		});
 		lbl_Search.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lbl_Search.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_Search.setBounds(775, 335, 240, 50);

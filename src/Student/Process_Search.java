@@ -14,7 +14,7 @@ public class Process_Search {
 		Connection conn = con.getCon();
 		
 		// Lệnh SQL
-		String sql = "Select * from tb_student";
+		String sql = "Select * from tb_score";
 		
 		// Tạo danh sách 
 		ArrayList<Student> list = new ArrayList();
@@ -30,10 +30,16 @@ public class Process_Search {
 				Student s = new Student();
 				s.setID(rs.getString("ID"));
 				s.setName(rs.getString("Name"));
-				s.setClassID(rs.getString("ClassID"));
-				s.setBirth(rs.getString("Birth"));
-				s.setGender(rs.getString("Gender"));
-				s.setAddress(rs.getString("Address"));
+				s.setLiterature(rs.getDouble("Literature"));
+				s.setMath(rs.getDouble("Math"));
+				s.setEnglish(rs.getDouble("English"));
+				s.setPhysical(rs.getDouble("Physical"));
+				s.setChemical(rs.getDouble("Chemical"));
+				s.setBiology(rs.getDouble("Biology"));
+				s.setHistory(rs.getDouble("History"));
+				s.setGeography(rs.getDouble("Geography"));
+				s.GPA();
+				s.Rank();
 				list.add(s);
 			}
 			conn.close();
@@ -45,22 +51,29 @@ public class Process_Search {
 	}
 	
 	// Phương thức "Tìm kiếm ID"
-	ArrayList<Student> getStudent_ByID(String ID){
+	public Student getStudent_ByID(String ID){
 		Connection conn = con.getCon();
-		String sql = "Select * from tb_student where ID = ?";
+		String sql = "Select * from tb_score where ID = ?";
 		ArrayList<Student> list = new ArrayList<>();
+		Student s = new Student();
 		try {
 			PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
 			ps.setString(1, ID);
 			ResultSet rs = ps.executeQuery();
+			
 			while(rs.next()) {
-				Student s = new Student();
 				s.setID(rs.getString("ID"));
 				s.setName(rs.getString("Name"));
-				s.setClassID(rs.getString("ClassID"));
-				s.setBirth(rs.getString("Birth"));
-				s.setGender(rs.getString("Gender"));
-				s.setAddress(rs.getString("Address"));
+				s.setLiterature(rs.getDouble("Literature"));
+				s.setMath(rs.getDouble("Math"));
+				s.setEnglish(rs.getDouble("English"));
+				s.setPhysical(rs.getDouble("Physical"));
+				s.setChemical(rs.getDouble("Chemical"));
+				s.setBiology(rs.getDouble("Biology"));
+				s.setHistory(rs.getDouble("History"));
+				s.setGeography(rs.getDouble("Geography"));
+				s.GPA();
+				s.Rank();
 				list.add(s);
 			}
 			conn.close();
@@ -68,7 +81,7 @@ public class Process_Search {
 		catch (SQLException e) {
 			System.out.print("Can't Search Student By ID");
 		}
-		return list;
+		return s;
 	}
 
 /*
